@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Muhammad Danish Pambudi — Industrial Engineering Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  
+  :root{
+    --paper:#141414;
+    --surface:#1E1E1E;
+    --ink:#F4F1E7;
+    --ink-soft:#A0A0A0;
+    --line:#2E2E2E;
+    --safety:#F4B400;
+    --safety-deep:#8A6200;
+    --graphite:#141414;
+    --graphite-line:#2A2A2A;
+    --graphite-soft:#8E8E8E;
+    --radius:0px;
+    --sheet-w:min(1140px, 92vw);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:
+      radial-gradient(circle at 1px 1px, rgba(255,255,255,0.08) 1px, transparent 0) 0 0/28px 28px,
+      var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{ font-family:'Big Shoulders Display', sans-serif; font-weight:700; letter-spacing:0.005em; color: #FFFFFF; }
+  .mono{ font-family:'IBM Plex Mono', monospace; }
+  a{ color:inherit; }
+  img{max-width:100%; display:block;}
+
+  .wrap{ width:var(--sheet-w); margin:0 auto; }
+  section{ padding:100px 0; border-bottom:1px solid var(--line); background: transparent; }
+  @media (max-width:720px){ section{ padding:64px 0; } }
+
+  /* ---------- section marker ---------- */
+  .tag-heading{ display:flex; align-items:baseline; gap:16px; margin-bottom:6px; }
+  .tag-heading .num{
+    font-family:'IBM Plex Mono', monospace; font-size:0.75rem; font-weight:600;
+    background:var(--safety); color:var(--graphite); padding:3px 8px; line-height:1.4;
+    flex-shrink:0;
+  }
+  .tag-heading h2{ font-size:1.9rem; color: #FFFFFF; }
+  .section-sub{ color:var(--ink-soft); max-width:60ch; margin-top:4px; margin-bottom:8px; }
+
+  /* ---------- nav ---------- */
+  header{
+    position:fixed; top:0; left:0; right:0; z-index:50;
+    background:rgba(20, 20, 20, 0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  nav{
+    width:var(--sheet-w); margin:0 auto;
+    display:flex; align-items:center; justify-content:space-between;
+    height:68px;
+  }
+  .logo{ display:flex; align-items:center; gap:12px; }
+  .logo .mark{
+    width:34px; height:34px; background:var(--safety); color:var(--graphite);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Big Shoulders Display', sans-serif; font-weight:800; font-size:0.95rem;
+    flex-shrink:0;
+  }
+  .logo .name{ font-weight:600; font-size:0.92rem; color: #FFFFFF; }
+  .status-pill{
+    display:inline-flex; align-items:center; gap:6px;
+    font-family:'IBM Plex Mono', monospace; font-size:0.68rem; letter-spacing:0.02em;
+    border:1px solid var(--line); padding:4px 9px; color: #FFFFFF;
+  }
+  .status-pill .dot{ width:6px; height:6px; background:var(--safety); flex-shrink:0; border-radius: 50%; }
+  .nav-links{ display:flex; align-items:center; gap:28px; font-size:0.86rem; color: var(--ink-soft); }
+  .nav-links a{ text-decoration:none; position:relative; padding:4px 0; transition: color .2s ease; }
+  .nav-links a:hover{ color: #FFFFFF; }
+  .nav-links a::after{
+    content:""; position:absolute; left:0; bottom:0; width:0; height:2px; background:var(--safety);
+    transition:width .2s ease;
+  }
+  .nav-links a:hover::after{ width:100%; }
+  .nav-toggle{ display:none; background:none; border:1px solid var(--line); width:38px; height:38px; color: #fff; }
+  @media (max-width:860px){
+    .nav-links .status-pill{ display:none; }
+    .nav-links{ display:none; }
+    .nav-toggle{ display:block; }
+    .nav-links.open{
+      display:flex; flex-direction:column; align-items:flex-start; position:absolute; top:68px; left:0; right:0;
+      background:var(--paper); padding:20px 24px; gap:16px; border-bottom:1px solid var(--line);
+    }
+    .nav-links.open .status-pill{ display:inline-flex; }
+  }
+  /* ---------- hero ---------- */
+  .hero{
+    padding:158px 0 90px;
+    border-bottom:1px solid var(--line);
+    position:relative;
+    overflow:hidden;
+    background:
+      linear-gradient(180deg, rgba(20,20,20,.6) 0%, rgba(20,20,20,.8) 100%),
+      url('Hero BG (1).jpg') center 30%/cover no-repeat;
+    color:#F4F1E7;
+  }
+  .hero-grid{ display:grid; grid-template-columns:1.5fr 1fr; gap:40px; align-items:start; position:relative; z-index:1; }
+  @media (max-width:860px){ .hero-grid{ grid-template-columns:1fr; } }
+  .hero-kicker{
+    font-family:'IBM Plex Mono', monospace; font-size:0.78rem; color:var(--ink-soft);
+    display:flex; align-items:center; gap:10px; margin-bottom:18px;
+  }
+  .hero-kicker .bar{ width:20px; height:2px; background:var(--safety); }
+  .hero h1{
+    font-size:clamp(2.6rem, 6.4vw, 5rem);
+    line-height:0.98; max-width:14ch; color:#FBF9F1;
+  }
+  .hero .role{
+    font-family:'Big Shoulders Display', sans-serif; font-weight:600;
+    font-size:clamp(1.1rem, 2vw, 1.5rem); color:var(--safety); margin-top:10px;
+  }
+  .hero p.lede{ max-width:56ch; color:var(--ink-soft); font-size:1.03rem; margin:24px 0 34px; }
+  .hero .cta-row{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:24px; }
+  
+  /* Buttons */
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:14px 22px; font-size:0.85rem; font-weight:600;
+    border:1px solid var(--line); text-decoration:none; border-radius:var(--radius);
+    font-family:'IBM Plex Mono', monospace;
+    transition:all .15s ease;
+  }
+  .btn-solid{ background:var(--safety); color:var(--graphite); border-color:var(--safety); }
+  .btn-solid:hover{ background:#fff; border-color:#fff; color:var(--graphite); }
+  .btn-ghost{ color:#F4F1E7; border-color:var(--line); background: transparent; }
+  .btn-ghost:hover{ background:var(--surface); border-color:#fff; color:#fff; }
+
+  /* ---------- stamp ---------- */
+  .stamp-wrap{ display:flex; justify-content:center; padding-top:6px; position:relative; z-index:1; }
+  .stamp-disc{ background:var(--surface); border-radius:50%; padding:16px; box-shadow:0 24px 48px -18px rgba(0,0,0,.9); }
+  .stamp{ width:180px; height:180px; display:block; transform:rotate(-7deg); opacity:0; animation:stampIn .7s 0.15s cubic-bezier(.2,.8,.3,1) forwards; }
+  @keyframes stampIn{ from{ opacity:0; transform:rotate(-24deg) scale(0.85); } to{ opacity:1; transform:rotate(-7deg) scale(1); } }
+  @media (prefers-reduced-motion: reduce){ .stamp{ animation:none; opacity:1; } }
+  @media (max-width:860px){ .stamp-wrap{ justify-content:flex-start; padding-top:28px; } }
+
+  /* ---------- about ---------- */
+  .about-grid{ display:grid; grid-template-columns:500px 1fr; gap:70px; align-items:start; margin-top:35px; }
+  @media (max-width:720px){ .about-grid{ grid-template-columns:1fr; } }
+  .id-card{ background:transparent; border:none; padding:0; }
+  .id-card .photo-slot{ aspect-ratio:4/5; overflow:hidden; background:transparent; border:none; }
+  .id-card .photo-slot img{ display:block; width:100%; height:100%; object-fit:cover; object-position:center top; }
+  .id-card .id-strip{
+    margin-top:12px; font-family:'IBM Plex Mono', monospace; font-size:0.62rem; color:var(--ink-soft);
+    display:flex; justify-content:space-between; border-top:none; padding-top:0;
+  }
+  .about-text h2{ font-size:1.9rem; margin-bottom:16px; }
+  .about-text p{ margin-bottom:16px; max-width:64ch; color:var(--ink-soft); }
+  
+  /* Fact List Dark Mode */
+  .fact-list{ margin-top:22px; display:grid; grid-template-columns:1fr 1fr; gap:0; max-width:520px; border:1px solid var(--line); background: var(--surface); }
+  .fact-list div{ padding:12px 14px; border-right:1px solid var(--line); border-bottom:1px solid var(--line); }
+  .fact-list div:nth-child(2n){ border-right:none; }
+  .fact-list div:nth-last-child(-n+2){ border-bottom:none; }
+  .fact-list div span{ display:block; font-family:'IBM Plex Mono', monospace; font-size:0.6rem; color:var(--safety); letter-spacing:0.05em; text-transform:uppercase; margin-bottom:4px; }
+
+  /* ---------- education ---------- */
+  .edu-list{ margin-top:36px; display:flex; flex-direction:column; }
+  .edu-row{
+    display:grid; grid-template-columns:44px 1fr auto auto; align-items:center; gap:20px;
+    padding:20px 0; border-top:1px solid var(--line);
+  }
+  .edu-row:last-child{ border-bottom:1px solid var(--line); }
+  @media (max-width:680px){ .edu-row{ grid-template-columns:36px 1fr; row-gap:6px; } .edu-row .edu-when, .edu-row .edu-gpa{ grid-column:2; } }
+  .edu-icon{ width:44px; height:44px; display:flex; align-items:center; justify-content:center; background:var(--surface); border:1px solid var(--line); }
+  .edu-icon img{ max-width:70%; max-height:70%; object-fit:contain; }
+  .edu-name h3{ font-size:1.15rem; font-family:'Big Shoulders Display', sans-serif; color: #FFFFFF; }
+  .edu-name span{ color:var(--ink-soft); font-size:0.86rem; }
+  .edu-gpa{ font-family:'IBM Plex Mono', monospace; font-size:0.8rem; text-align:right; color: var(--safety); }
+  .edu-gpa small{ display:block; color:var(--ink-soft); font-size:0.6rem; text-transform:uppercase; letter-spacing:0.05em; }
+  .edu-when{ font-family:'IBM Plex Mono', monospace; font-size:0.76rem; color:var(--ink-soft); white-space:nowrap; }
+
+  /* ---------- tools ---------- */
+  .tool-grid{ display:grid; grid-template-columns:repeat(8, 1fr); gap:1px; margin-top:36px; background:var(--line); border:1px solid var(--line); }
+  @media (max-width:960px){ .tool-grid{ grid-template-columns:repeat(6, 1fr); } }
+  @media (max-width:720px){ .tool-grid{ grid-template-columns:repeat(4, 1fr); } }
+  @media (max-width:480px){ .tool-grid{ grid-template-columns:repeat(3, 1fr); } }
+  .tool-card{
+    display:flex; flex-direction:column; align-items:center; gap:12px;
+    padding:22px 10px; background:var(--surface);
+    transition:all .15s ease;
+  }
+  .tool-card:hover{ background:#262626; box-shadow:inset 0 -3px 0 var(--safety); }
+  .tool-icon{ width:40px; height:40px; display:flex; align-items:center; justify-content:center; }
+  .tool-icon img{ max-width:100%; max-height:100%; width:auto; height:auto; object-fit:contain; }
+  .tool-name{ font-size:0.72rem; text-align:center; color:var(--ink-soft); font-family:'IBM Plex Mono', monospace; }
+  .skill-subtitle{ font-size:1.3rem; margin-top:52px; margin-bottom:16px; color: #FFFFFF; }
+  .chip-row{ display:flex; flex-wrap:wrap; gap:8px; }
+  .chip{
+    font-family:'IBM Plex Mono', monospace; font-size:0.72rem;
+    border:1px solid var(--line); color:var(--ink-soft); padding:6px 11px; background: var(--surface);
+  }
+
+  /* ---------- experience ---------- */
+  .job-list{ display:flex; flex-direction:column; gap:28px; margin-top:40px; }
+  .job-card{ border:1px solid var(--line); background:var(--surface); }
+  .job-ticket{
+    display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:16px;
+    padding:22px 24px; border-bottom:1px dashed var(--line);
+  }
+  .job-ticket h3{ font-size:1.3rem; color: #FFFFFF; }
+  .job-ticket .company{ color:var(--ink-soft); font-size:0.92rem; margin-top:2px; }
+  .job-ticket .period{
+    font-family:'IBM Plex Mono', monospace; font-size:0.7rem; color:var(--ink-soft);
+    text-align:right; white-space:nowrap; border-left:1px solid var(--line); padding-left:16px;
+  }
+  .job-body{ padding:22px 24px; }
+  .job-body p{ color:var(--ink-soft); max-width:72ch; margin-bottom:14px; font-size:0.94rem; }
+  .job-body p:last-of-type{ margin-bottom:20px; }
+
+  .log-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(150px, 1fr)); gap:1px; background:var(--line); border:1px solid var(--line); margin-bottom:22px; }
+  .log-item{ background:var(--surface); display:flex; flex-direction:column; }
+  .log-item img{ width:100%; aspect-ratio:4/3; object-fit:cover; }
+  .log-cap{
+    font-family:'IBM Plex Mono', monospace; font-size:0.66rem; color:var(--ink-soft);
+    padding:8px 10px; display:flex; gap:8px; align-items:baseline;
+  }
+  .log-cap .no{ color:var(--safety); font-weight:600; flex-shrink:0; }
+
+  /* ---------- volunteer / timeline ---------- */
+  .timeline{ margin-top:40px; position:relative; padding-left:30px; }
+  .timeline::before{ content:""; position:absolute; left:4px; top:6px; bottom:6px; width:1px; background:var(--line); }
+  .t-item{ position:relative; padding-bottom:36px; }
+  .t-item:last-child{ padding-bottom:0; }
+  .t-item::before{ content:""; position:absolute; left:-30px; top:4px; width:9px; height:9px; background:var(--safety); border:1px solid var(--paper); }
+  .t-item .when{ font-family:'IBM Plex Mono', monospace; font-size:0.7rem; color:var(--safety); display:block; margin-bottom:5px; }
+  .t-item h4{ font-family:'Big Shoulders Display', sans-serif; font-weight:600; font-size:1.08rem; margin-bottom:6px; color: #FFFFFF; }
+  .t-item p{ color:var(--ink-soft); max-width:64ch; font-size:0.92rem; }
+
+  /* ---------- project gallery ---------- */
+  .project-gallery{ display:grid; grid-template-columns:repeat(3, 1fr); gap:1px; background:var(--line); border:1px solid var(--line); margin-top:32px; }
+  @media (max-width:768px){ .project-gallery{ grid-template-columns:repeat(2, 1fr); } }
+  @media (max-width:480px){ .project-gallery{ grid-template-columns:1fr; } }
+  .gallery-item{ position:relative; overflow:hidden; aspect-ratio:4/3; cursor:pointer; background:var(--surface); }
+  .gallery-item img{ width:100%; height:100%; object-fit:cover; display:block; transition:transform .4s ease; }
+  .gallery-item:hover img{ transform:scale(1.06); }
+  .gallery-caption{
+    position:absolute; bottom:0; left:0; right:0; padding:10px 12px;
+    background:linear-gradient(to top, rgba(0,0,0,.85), transparent);
+    color:#fff; font-family:'IBM Plex Mono', monospace; font-size:0.72rem;
+    opacity:0; transform:translateY(8px); transition:opacity .25s ease, transform .25s ease;
+  }
+  .gallery-item:hover .gallery-caption{ opacity:1; transform:translateY(0); }
+
+  .thesis-sheet{ margin-top:36px; border:1px solid var(--line); background:var(--surface); }
+  .thesis-sheet .th-head{ padding:22px 24px; border-bottom:1px solid var(--line); }
+  .thesis-sheet .th-head .when{ font-family:'IBM Plex Mono', monospace; font-size:0.7rem; color:var(--safety); }
+  .thesis-sheet .th-head h4{ font-family:'Big Shoulders Display', sans-serif; font-weight:600; font-size:1.15rem; margin-top:6px; max-width:60ch; text-transform:none; color: #FFFFFF; }
+  .thesis-meta{ display:grid; grid-template-columns:1fr 1fr; }
+  @media (max-width:640px){ .thesis-meta{ grid-template-columns:1fr; } }
+  .thesis-meta > div{ padding:18px 24px; border-right:1px solid var(--line); font-family:'IBM Plex Mono', monospace; font-size:0.84rem; color: var(--ink-soft); }
+  .thesis-meta > div:last-child{ border-right:none; }
+  .thesis-meta div span{ display:block; font-size:0.62rem; color:var(--graphite-soft); letter-spacing:0.06em; text-transform:uppercase; margin-bottom:6px; }
+  .thesis-meta .names{ display:flex; flex-direction:column; gap:2px; }
+  .thesis-body{ padding:22px 24px; border-top:1px solid var(--line); }
+  .thesis-body p{ color:var(--ink-soft); max-width:72ch; margin-bottom:12px; font-size:0.94rem; }
+
+  /* ---------- contact / footer ---------- */
+  .contact{
+    background:
+      linear-gradient(180deg, rgba(20,20,20,.6) 0%, rgba(20,20,20,.8) 100%),
+      url("IMG_0628.JPG") center 30%/cover no-repeat;
+    color:#F2EFE6; border-bottom:none; position:relative; overflow:hidden;
+  }
+  .contact .tag-heading h2{ color:#F2EFE6; }
+  .contact-headline{ color:#fff; font-size:2.1rem; max-width:18ch; margin-top:18px; }
+  .contact p.section-sub{ color:var(--graphite-soft); }
+  .contact-row{ display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:32px; margin-top:36px; }
+  .contact-links{ display:flex; flex-direction:column; gap:10px; font-size:0.95rem; }
+  .contact-links a{ text-decoration:none; color:#F2EFE6; border-bottom:1px solid transparent; font-family:'IBM Plex Mono', monospace; font-size:0.85rem; }
+  .contact-links a:hover{ border-color:var(--safety); }
+  footer.strip{
+    font-family:'IBM Plex Mono', monospace; font-size:0.68rem; color:var(--graphite-soft);
+    display:flex; justify-content:space-between; padding-top:40px; margin-top:52px; border-top:1px solid var(--line);
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo">
+      <div class="mark">MD</div>
+      <span class="name">Muhammad Danish Pambudi</span>
+    </div>
+    <div class="nav-links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#education">Education</a>
+      <a href="#skills">Skill &amp; Tools</a>
+      <a href="#experience">Experience</a>
+      <a href="#volunteer">Volunteer</a>
+      <a href="#project">Project</a>
+      <a href="#certificate">Certificate</a>
+      <a href="#publication">Publication</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Buka menu">☰</button>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-kicker"><span class="bar"></span>Industrial Engineering · Universitas Singaperbangsa Karawang</div>
+        <h1>Muhammad Danish Pambudi</h1>
+        <div class="role">Health, Safety &amp; Environment · Inventory Management (Warehouse) Enthusiast</div>
+        <p class="lede">Fresh graduate with hands-on internship experience in HSE inspection and site safety, and a track record in process improvement, ergonomics, and operational efficiency.</p>
+        <div class="cta-row">
+          <a class="btn btn-solid" href="CV ATS_Muhammad Danish Pambudi.pdf" download target="_blank">Download CV (PDF)</a>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="tag-heading"><span class="num">01</span><h2>About</h2></div>
+    <div class="about-grid">
+      <div class="id-card">
+        <div class="photo-slot"><img src="DANISH_NIH-removebg-preview.png" alt="Foto Profil"></div>
+      </div>
+      <div class="about-text">
+        <p>Industrial Engineering graduate from Universitas Singaperbangsa Karawang with a GPA of 3.50/4.00 and internship experience as an HSE Intern. Experienced in conducting safety inspections, safety induction, work monitoring, and HSE documentation in a project environment. Interested in HSE, Risk Management, Supply Chain Management, and Inventory Management (Warehouse), while remaining open to opportunities across other industrial fields. Equipped with knowledge of process improvement, systems thinking, and operational efficiency gained through academic coursework, projects, and work experience. Proficient in Microsoft Excel, Microsoft Word, Google Workspace, and Canva, with strong skills in teamwork, problem-solving, communication, customer service, and administrative support.</p>
+        <div class="fact-list mono">
+          <div><span>University</span>Singaperbangsa University of Karawang</div>
+          <div><span>GPA</span>3.50/4.00</div>
+          <div><span>Location</span>Bogor, Indonesia</div>
+          <div><span>Status</span>Open to internship &amp; full-time roles</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap">
+    <div class="tag-heading"><span class="num">02</span><h2>Education</h2></div>
+    <div class="edu-list">
+      <div class="edu-row">
+        <div class="edu-icon"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjVsb6tSjgJncrsCg-nCviXiFhUQBP0YEAgAz7HjduD3Dpt7BerHt9Uj2vFiaEG5TUT6ujAW3U2B4ZD5aqS7iyV_N8j9HyBUo-KBIdbWRtIY0e_seqgJpn1lukSjtX1qBU5fFjqCnAZbb25vEmA5KlA2k2jPc7qLoPtpVyAhno9OoHfxoj4zvCFJ2RVdDtn/s205/log-unsika.png" alt="Logo Universitas Singaperbangsa Karawang"></div>
+        <div class="edu-name"><h3>Industrial Engineering</h3><span>Universitas Singaperbangsa Karawang</span></div>
+        <div class="edu-when">Sept 2022 — July 2026</div>
+        <div class="edu-gpa"><small>GPA</small>3.50/4.00</div>
+      </div>
+      <div class="edu-row">
+        <div class="edu-icon"><img src="Logo Nepal.png" alt="Logo SMA Negeri 1 Cileungsi"></div>
+        <div class="edu-name"><h3>Math &amp; Science Program</h3><span>SMA Negeri 1 Cileungsi</span></div>
+        <div class="edu-when">2019 — 2022</div>
+        <div class="edu-gpa"><small>Score</small>83.00/100</div>
+      </div>
+      <div class="edu-row">
+        <div class="edu-icon"><img src="logo scib.webp" alt="Logo SMP Smart Cibinong"></div>
+        <div class="edu-name"><h3>General Education</h3><span>SMP Smart Cibinong</span></div>
+        <div class="edu-when">2016 — 2019</div>
+        <div class="edu-gpa"><small>Score</small>82.00/100</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="tag-heading"><span class="num">03</span><h2>Skill &amp; Tools</h2></div>
+    <p class="section-sub">Software and tools I regularly use across work, study, and project settings.</p>
+    <div class="tool-grid">
+      <div class="tool-card"><div class="tool-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/e/e3/Microsoft_Office_Excel_%282019%E2%80%932025%29.svg" alt="Microsoft Excel"></div><span class="tool-name">Excel</span></div>
+      <div class="tool-card"><div class="tool-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Microsoft_Office_Word_%282019%E2%80%932025%29.svg" alt="Microsoft Word"></div><span class="tool-name">Word</span></div>
+      <div class="tool-card"><div class="tool-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/2/25/Microsoft_Office_PowerPoint_%282019%E2%80%932025%29.svg" alt="Microsoft PowerPoint"></div><span class="tool-name">PowerPoint</span></div>
+      <div class="tool-card"><div class="tool-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Gmail_icon_%282020%29.svg" alt="Gmail"></div><span class="tool-name">Gmail</span></div>
+      <div class="tool-card"><div class="tool-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/d/da/Google_Drive_logo.png" alt="Google Drive"></div><span class="tool-name">Google Drive</span></div>
+      <div class="tool-card"><div class="tool-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Google_Sheets_2020_Logo.svg" alt="Google Spreadsheets"></div><span class="tool-name">Sheets</span></div>
+      <div class="tool-card"><div class="tool-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/6/66/Google_Docs_2020_Logo.svg" alt="Google Docs"></div><span class="tool-name">Docs</span></div>
+      <div class="tool-card"><div class="tool-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Google_Meet_text_logo_%282020%29.svg" alt="Google Meet"></div><span class="tool-name">Google Meet</span></div>
+      <div class="tool-card"><div class="tool-icon"><img src="https://images.seeklogo.com/logo-png/65/1/canva-logo-png_seeklogo-653227.png" alt="Canva"></div><span class="tool-name">Canva</span></div>
+      <div class="tool-card"><div class="tool-icon"><img src="https://images.seeklogo.com/logo-png/45/1/draw-io-logo-png_seeklogo-451991.png" alt="Draw.io"></div><span class="tool-name">Draw.io</span></div>
+      <div class="tool-card"><div class="tool-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Logo_Visio_2016.png?utm_source=id.wikipedia.org&utm_campaign=imageinfo&utm_content=original" alt="Microsoft Visio"></div><span class="tool-name">Microsoft Visio</span></div>
+      <div class="tool-card"><div class="tool-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg" alt="Figma"></div><span class="tool-name">Figma</span></div>
+      <div class="tool-card"><div class="tool-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/7/78/SPSS_An_IBM_Company_logo.svg" alt="SPSS"></div><span class="tool-name">SPSS</span></div>
+      <div class="tool-card"><div class="tool-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Visual_Studio_Code_1.35_icon.svg" alt="Visual Studio Code"></div><span class="tool-name">VS Code</span></div>
+      <div class="tool-card"><div class="tool-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/d/d2/Minitab_Logo.svg" alt="Minitab"></div><span class="tool-name">Minitab</span></div>
+      <div class="tool-card"><div class="tool-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/0/03/Xampp_logo.svg" alt="XAMPP"></div><span class="tool-name">XAMPP</span></div>
+      <div class="tool-card"><div class="tool-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/a/af/Adobe_Photoshop_CC_icon.svg" alt="Adobe Photoshop"></div><span class="tool-name">Photoshop</span></div>
+      <div class="tool-card"><div class="tool-icon"><img src="https://images.seeklogo.com/logo-png/27/1/mysql-logo-png_seeklogo-273735.png" alt="MySQL"></div><span class="tool-name">MySQL</span></div>
+      <div class="tool-card"><div class="tool-icon"><img src="https://images.seeklogo.com/logo-png/35/1/autocad-logo-png_seeklogo-353607.png" alt="AutoCAD"></div><span class="tool-name">AutoCAD</span></div>
+      <div class="tool-card"><div class="tool-icon"><img src="https://images.seeklogo.com/logo-png/42/1/sketchup-logo-png_seeklogo-428440.png" alt="SketchUp"></div><span class="tool-name">SketchUp</span></div>
+      <div class="tool-card"><div class="tool-icon"><img src="https://upload.wikimedia.org/wikipedia/en/6/6b/BannerLogo_problemSolved_%28R%29.svg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=original" alt="FlexSim"></div><span class="tool-name">FlexSim</span></div>
+      <div class="tool-card"><div class="tool-icon"><img src="" alt=""></div><span class="tool-name"></span></div>
+      <div class="tool-card"><div class="tool-icon"><img src="" alt=""></div><span class="tool-name"></span></div>
+      <div class="tool-card"><div class="tool-icon"><img src="" alt=""></div><span class="tool-name"></span></div>
+    </div>
+    <h3 class="skill-subtitle">Skills</h3>
+    <div class="chip-row">
+      <span class="chip">Health, Safety &amp; Environment (HSE)</span><span class="chip">Ergonomics</span><span class="chip">Risk Management</span><span class="chip">AutoCAD (Basic)</span><span class="chip">Sketchup (Basic)</span><span class="chip">Field Work</span><span class="chip">Teamwork</span><span class="chip">Public Speaking</span><span class="chip">Communication</span><span class="chip">Customer Service</span><span class="chip">Analytical Skills</span><span class="chip">Field Work</span><span class="chip">HTML</span><span class="chip">Time Management</span><span class="chip">Conflict Management</span>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="tag-heading"><span class="num">04</span><h2>Experience</h2></div>
+    <p class="section-sub">A collection of work experience, internships, and projects I've worked on.</p>
+    <div class="job-list">
+
+      <article class="job-card">
+        <div class="job-ticket">
+          <div>
+            <h3>Health, Safety and Environment Intern</h3>
+            <div class="company">PT Wijaya Karya (Persero) Tbk — RSPON Project</div>
+          </div>
+          <div class="period">Dec 2024 — Feb 2025<br>3 mos</div>
+        </div>
+        <div class="job-body">
+          <div class="log-grid">
+            <div class="log-item"><img src="Internship Team.jpeg" alt="Team Inspeksi HSE"><div class="log-cap"><span class="no">01</span><span>Routine inspections of work-at-height activities to ensure HSE compliance.</span></div></div>
+            <div class="log-item"><img src="Inspeksi Kelistrikan.jpeg" alt="Inspeksi Kelistrikan Bersama Team HSE"><div class="log-cap"><span class="no">02</span><span>Electrical inspections with the HSE Supervisor to identify hazards.</span></div></div>
+            <div class="log-item"><img src="Safety Induction.jpeg" alt="Safety Induction"><div class="log-cap"><span class="no">03</span><span>Delivered safety inductions for new workers on site rules and hazards.</span></div></div>
+            <div class="log-item"><img src="Inspeksi Alat.jpeg" alt="Inspeksi Alat bersama Team HSE"><div class="log-cap"><span class="no">04</span><span>Equipment inspections with the HSE Team for safe operating condition.</span></div></div>
+            <div class="log-item"><img src="Scaffolding.jpeg" alt="Meninjau Langsung Pekerjaan yang Menggunakan Scaffolding"><div class="log-cap"><span class="no">05</span><span>Monitored scaffolding activities for compliance with safety standards.</span></div></div>
+          </div>
+          <p>- Conducted routine HSE inspections to ensure compliance with occupational health and safety regulations on the construction site.</p>
+          <p>- Conducted inspections and checks of work tools and equipment to ensure their proper condition and safe use.</p>
+          <p>- Promoted workplace housekeeping and supported the implementation of the 5S/5R program to maintain a safe working environment.</p>
+          <p>- Assisted in incident and near-miss investigations by collecting data and documenting findings.</p>
+          <p>- Monitored compliance with work permit systems and safe work procedures.</p>
+          <p>- Prepared daily, weekly, and monthly HSE reports, including inspection findings and safety observations.</p>
+          <p>- Recorded and managed new worker data using spreadsheets and assisted in the preparation and distribution of ID cards.</p>
+          <div class="chip-row">
+            <span class="chip">Administrative Support</span><span class="chip">Human Resources (HR)</span><span class="chip">Microsoft Excel</span><span class="chip">Environment, Health &amp; Safety (EHS)</span><span class="chip">Project Planning</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="job-card">
+        <div class="job-ticket">
+          <div>
+            <h3>Customer Service &amp; Admin Staff</h3>
+            <div class="company">Cibubur Kardus — Family Business</div>
+          </div>
+          <div class="period">Jul 2024 — Present<br>2 yrs 2 mos</div>
+        </div>
+        <div class="job-body">
+          <div class="log-grid">
+            <div class="log-item"><img src="CK1.jpg" alt="Menangani pesanan pelanggan di Cibubur Kardus"><div class="log-cap"><span class="no">01</span><span>Handling customer orders.</span></div></div>
+            <div class="log-item"><img src="CK2.jpg" alt="Menyiapkan produk kardus sesuai pesanan"><div class="log-cap"><span class="no">02</span><span>Managing stock flow.</span></div></div>
+            <div class="log-item"><img src="CK3.jpg" alt="Mengelola arus barang masuk dan keluar"><div class="log-cap"><span class="no">03</span><span>Packing and preparing orders.</span></div></div>
+          </div>
+          <p>- Served customers by handling inquiries, orders, and product requests to ensure a positive customer experience.</p>
+          <p>- Assisted with the flow of incoming and outgoing goods, including checking and coordinating product movement.</p>
+          <p>- Prepared and packed cardboard products according to customer orders and delivery requirements.</p>
+          <p>- Managed customer orders and provided updates regarding product availability and order status.</p>
+          <p>- Maintained administrative records related to customer orders and product shipments.</p>
+          <p>- Supported daily business operations to ensure smooth customer service and order fulfillment.</p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="volunteer">
+  <div class="wrap">
+    <div class="tag-heading"><span class="num">05</span><h2>Volunteer</h2></div>
+    <div class="timeline">
+      <div class="t-item">
+        <span class="when">Januari 2024 — Februari 2024</span>
+        <h4>Panitia Pemilihan Presiden 2024 — Kelompok Penyelenggara Pemungutan Suara</h4>
+        <p>- Melaksanakan proses pemungutan dan penghitungan suara sesuai dengan ketentuan yang berlaku.</p>
+        <p>- Memverifikasi data pemilih serta memastikan kelancaran administrasi di TPS.</p>
+        <p>- Menyusun berita acara dan dokumentasi hasil pemungutan serta penghitungan suara secara akurat.</p>
+        <p>- Berkoordinasi dengan tim untuk menjaga proses pemilu yang tertib, transparan, dan sesuai prosedur.</p>
+      </div>
+      <div class="t-item">
+        <span class="when">Juni 2025 - Agustus 2025</span>
+        <h4>Staff PDD — Kuliah Kerja Nyata (KKN)</h4>
+        <p>- Membuat dan mengelola konten publikasi untuk media sosial KKN, termasuk Instagram, TikTok, dan YouTube.</p>
+        <p>- Mendokumentasikan berbagai kegiatan dan program kerja KKN melalui foto dan video.</p>
+        <p>- Melakukan editing foto dan video untuk kebutuhan publikasi dan dokumentasi kegiatan.</p>
+        <p>- Berkoordinasi dengan staff divisi lain dan panitia dalam menyiapkan materi publikasi kegiatan.</p>
+        <p>- Mendukung branding dan penyampaian informasi program kerja KKN kepada masyarakat melalui media digital.</p>
+      </div>
+      <div class="t-item">
+        <span class="when">2024</span>
+        <h4>Panitia Besar Divisi Lapangan — Praktikum Analisis dan Perancangan Sistem Informasi</h4>
+        <p>- Bertanggung jawab dalam mendukung kelancaran pelaksanaan praktikum di lapangan, termasuk mempersiapkan dan memastikan kesiapan tempat, peralatan, serta kebutuhan teknis selama kegiatan berlangsung. Berkoordinasi dengan panitia dan peserta, mengatur jalannya kegiatan sesuai rundown, serta membantu menangani kendala teknis maupun operasional yang muncul selama praktikum.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="project">
+  <div class="wrap">
+    <div class="tag-heading"><span class="num">06</span><h2>Project</h2></div>
+    <div class="project-gallery">
+      <div class="gallery-item"><img src="TA 1.png" alt="Bukti Project 1"><div class="gallery-caption">Capstone Design</div></div>
+      <div class="gallery-item"><img src="TA 2.png" alt="Bukti Project 2"><div class="gallery-caption">Capstone Design</div></div>
+      <div class="gallery-item"><img src="TA 3.png" alt="Bukti Project 3"><div class="gallery-caption">Capstone Design</div></div>
+      <div class="gallery-item"><img src="TA 4.png" alt="Bukti Project 4"><div class="gallery-caption">Capstone Design</div></div>
+      <div class="gallery-item"><img src="TA 5.png" alt="Bukti Project 5"><div class="gallery-caption">Capstone Design</div></div>
+      <div class="gallery-item"><img src="TA 6.png" alt="Bukti Project 6"><div class="gallery-caption">Capstone Design</div></div>
+      <div class="gallery-item"><img src="TA 8.jpeg" alt="Bukti Project 8"><div class="gallery-caption">Capstone Design</div></div>
+      <div class="gallery-item"><img src="TA 9.jpeg" alt="Bukti Project 9"><div class="gallery-caption">Capstone Design</div></div>
+      <div class="gallery-item"><img src="TA 10.jpeg" alt="Bukti Project 10"><div class="gallery-caption">Capstone Design Team</div></div>
+    </div>
+
+    <div class="thesis-sheet">
+      <div class="th-head">
+        <span class="when mono">17 December 2025</span>
+        <h4>Perancangan Meja Las Multifungsi Ergonomis untuk Meningkatkan Efisiensi Proses Pengelasan Shielded Metal Arc Welding (SMAW)</h4>
+      </div>
+      <div class="thesis-meta">
+        <div>
+          <span>Anggota Tim</span>
+          <div class="names">
+            <span>1. Muhamad Raihan Faturahman</span>
+            <span>2. Muhammad Danish Pambudi</span>
+            <span>3. Muhammad Farid Wimar Putra</span>
+            <span>4. Don Arges Pandjaitan</span>
+          </div>
+        </div>
+        <div>
+          <span>Bagian Skripsi</span>
+          Perumusan Strategi Bisnis untuk Meningkatkan Daya Saing pada PT Johan Karya Manunggal dengan Integrasi Business Model Canvas (BMC), Analisis SWOT dan QSPM
+        </div>
+      </div>
+      <div class="thesis-body">
+        <p>- Contributed to the design and development of an ergonomic multifunction welding table to improve welding process efficiency, operator comfort, and workplace safety.</p>
+        <p>- Applied the PDCA (Plan Do Check Action) methodology to support systematic planning, design development, evaluation, and continuous improvement.</p>
+        <p>- Conducted analysis of operator needs, ergonomic conditions, work posture, and welding process requirements through observation and data collection.</p>
+        <p>- Evaluated the proposed design based on ergonomic aspects, operator efficiency, technical feasibility, and occupational safety considerations.</p>
+        <p>- Collaborated with a multidisciplinary team to develop a practical workstation solution for SMAW welding activities.</p>
+        <div class="chip-row">
+          <span class="chip">SolidWorks</span><span class="chip">AutoCAD</span><span class="chip">PDCA</span><span class="chip">Teamwork</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="certificate">
+  <div class="wrap">
+    <div class="tag-heading"><span class="num">07</span><h2>Certificate</h2></div>
+    <div class="project-gallery">
+      <div class="gallery-item"><img src="TOEFL.png" alt="Sertifikat TOEFL"><div class="gallery-caption">TOEFL</div></div>
+      <div class="gallery-item"><img src="Sertifikat K3 Danish.png" alt="Sertifikat K3"><div class="gallery-caption">Sertifikat K3</div></div>
+      <div class="gallery-item"><img src="Sertifikat 3.png" alt="Sertifikat 3"><div class="gallery-caption">Certificate 03</div></div>
+      <div class="gallery-item"><img src="Sertifikat 4.png" alt="Sertifikat 4"><div class="gallery-caption">Certificate 04</div></div>
+      <div class="gallery-item"><img src="Sertifikat 5.png" alt="Sertifikat 5"><div class="gallery-caption">Certificate 05</div></div>
+      <div class="gallery-item"><img src="Sertifikat 6.png" alt="Sertifikat 6"><div class="gallery-caption">Certificate 06</div></div>
+      <div class="gallery-item"><img src="Sertifikat 7.png" alt="Sertifikat 7"><div class="gallery-caption">Certificate 07</div></div>
+      <div class="gallery-item"><img src="Sertifikat 8.png" alt="Sertifikat 8"><div class="gallery-caption">Certificate 08</div></div>
+      <div class="gallery-item"><img src="Sertifikat 9.png" alt="Sertifikat 9"><div class="gallery-caption">Certificate 09</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="publication">
+  <div class="wrap">
+    <div class="tag-heading"><span class="num">08</span><h2>Publication</h2></div>
+    <div class="project-gallery">
+      <div class="gallery-item"><img src="Jurnal 1.png" alt="Bukti Publication 1"><div class="gallery-caption">Publication 01</div></div>
+      <div class="gallery-item"><img src="Jurnal 2.png" alt="Bukti Publication 2"><div class="gallery-caption">Publication 02</div></div>
+      <div class="gallery-item"><img src="Jurnal 3.png" alt="Bukti Publication 3"><div class="gallery-caption">Publication 03</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap">
+    <div class="tag-heading"><span class="num">09</span><h2>Contact</h2></div>
+    <h2 class="contact-headline">Open for internship or full-time opportunities.</h2>
+    <div class="contact-row">
+      <div class="contact-links">
+        <a href="mailto:mdanishpambudii@gmail.com">mdanishpambudii@gmail.com</a>
+        <a href="https://www.linkedin.com/in/muhammad-danish-pambudi" target="_blank">linkedin.com/in/muhammad-danish-pambudi</a>
+      </div>
+      <a class="btn btn-solid" href="mailto:mdanishpambudii@gmail.com">Hubungi Saya</a>
+    </div>
+    <footer class="strip">
+      <span>© 2026 Muhammad Danish Pambudi</span>
+      <span>Industrial Engineering</span>
+    </footer>
+  </div>
+</section>
+
+<script>
+  const toggle = document.getElementById('navToggle');
+  const links = document.getElementById('navLinks');
+  toggle.addEventListener('click', () => links.classList.toggle('open'));
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+</script>
+
+</body>
+</html>
