@@ -595,6 +595,15 @@
 .cd-wrap img{ display:block; width:100%; height:auto; box-shadow:0 24px 50px -22px rgba(0,0,0,.9); }
 .cd-wrap.is-zoom{ position:fixed; inset:0; z-index:100; width:auto; display:flex; align-items:center; justify-content:center; padding:24px; background:rgba(0,0,0,.92); cursor:zoom-out; }
 .cd-wrap.is-zoom img{ width:auto; max-width:100%; max-height:92vh; box-shadow:none; }
+
+  /* hero: centred "PORTFOLIO" banner with the name underneath */
+.hero-head{ position:relative; z-index:1; text-align:center; display:flex; flex-direction:column; align-items:center; margin-bottom:44px; }
+.hero-head .hero-kicker{ justify-content:center; margin-bottom:22px; }
+.hero-portfolio{ font-family:'Big Shoulders Display', sans-serif; font-weight:800; text-transform:uppercase;
+  font-size:clamp(3.2rem, 11vw, 8rem); letter-spacing:.3em; padding-left:.3em; color:var(--safety); line-height:.95;
+  text-shadow:0 4px 30px rgba(0,0,0,.55); }
+.hero-head h1.hero-title{ max-width:none; margin-top:10px; font-size:clamp(2rem, 5.2vw, 4.2rem); line-height:1.05; text-shadow:0 4px 30px rgba(0,0,0,.6); }
+@media (max-width:520px){ .hero-portfolio{ font-size:clamp(2.2rem, 12vw, 3rem); letter-spacing:.14em; padding-left:.14em; } .hero-head .hero-kicker .bar{ display:none; } }
 </style>
 </head>
 <body>
@@ -624,12 +633,15 @@
 
 <section class="hero">
   <div class="wrap">
+    <div class="hero-head">
+      <div class="hero-kicker"><span class="bar"></span>Industrial Engineering · Universitas Singaperbangsa Karawang</div>
+      <div class="hero-portfolio">PORTFOLIO</div>
+      <h1 class="hero-title">Muhammad Danish Pambudi</h1>
+    </div>
     <div class="hero-grid">
       <div>
-        <div class="hero-kicker"><span class="bar"></span>Industrial Engineering · Universitas Singaperbangsa Karawang</div>
-        <h1 class="hero-title">Muhammad Danish Pambudi</h1>
         <div class="role">Health, Safety &amp; Environment Enthusiast</div>
-        <p class="lede">Fresh graduate with hands-on internship experience in HSE inspection and site safety, and a track record in process improvement, ergonomics, and operational efficiency.</p>
+       <p class="lede">Fresh graduate with a strong interest in Occupational Health &amp; Safety (K3) and hands-on experience as an HSE Intern in a construction project environment.</p>
         <div class="cta-row">
           <a class="btn btn-solid" href="CV_Muhammad Danish Pambudii.pdf" download target="_blank">Download CV (PDF)</a>
         </div>
