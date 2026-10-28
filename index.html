@@ -583,27 +583,44 @@
   @media (max-width:600px){ .job-ticket .period{ text-align:left; border-left:0; padding-left:0; } }
 
   /* ===== Internship completion certificate ===== */
-.cd-block{ margin-top:26px; border:1px solid var(--line); background:rgba(255,255,255,.02); }
-.cd-head{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; padding:14px 18px; border-bottom:1px dashed var(--line); }
-.cd-head .cd-title{ font-family:'IBM Plex Mono', monospace; font-size:.74rem; color:var(--ink-soft); display:flex; align-items:center; gap:10px; }
-.cd-head .cd-title .bar{ width:20px; height:2px; background:var(--safety); flex-shrink:0; }
-.cd-head .cd-title strong{ color:#fff; font-weight:600; }
-.cd-actions{ display:flex; gap:8px; flex-wrap:wrap; }
-.cd-actions .btn{ padding:8px 12px; font-size:.72rem; }
-.cd-stage{ padding:22px 18px 26px; display:flex; justify-content:center; }
-.cd-wrap{ width:min(760px,100%); cursor:zoom-in; }
-.cd-wrap img{ display:block; width:100%; height:auto; box-shadow:0 24px 50px -22px rgba(0,0,0,.9); }
-.cd-wrap.is-zoom{ position:fixed; inset:0; z-index:100; width:auto; display:flex; align-items:center; justify-content:center; padding:24px; background:rgba(0,0,0,.92); cursor:zoom-out; }
-.cd-wrap.is-zoom img{ width:auto; max-width:100%; max-height:92vh; box-shadow:none; }
+  .cd-block{ margin-top:26px; border:1px solid var(--line); background:rgba(255,255,255,.02); }
+  .cd-head{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; padding:14px 18px; border-bottom:1px dashed var(--line); }
+  .cd-head .cd-title{ font-family:'IBM Plex Mono', monospace; font-size:.74rem; color:var(--ink-soft); display:flex; align-items:center; gap:10px; }
+  .cd-head .cd-title .bar{ width:20px; height:2px; background:var(--safety); flex-shrink:0; }
+  .cd-head .cd-title strong{ color:#fff; font-weight:600; }
+  .cd-actions{ display:flex; gap:8px; flex-wrap:wrap; }
+  .cd-actions .btn{ padding:8px 12px; font-size:.72rem; }
+  .cd-stage{ padding:22px 18px 26px; display:flex; justify-content:center; }
+  .cd-wrap{ width:min(760px,100%); cursor:zoom-in; }
+  .cd-wrap img{ display:block; width:100%; height:auto; box-shadow:0 24px 50px -22px rgba(0,0,0,.9); }
+  .cd-wrap.is-zoom{ position:fixed; inset:0; z-index:100; width:auto; display:flex; align-items:center; justify-content:center; padding:24px; background:rgba(0,0,0,.92); cursor:zoom-out; }
+  .cd-wrap.is-zoom img{ width:auto; max-width:100%; max-height:92vh; box-shadow:none; }
+
 
   /* hero: centred "PORTFOLIO" banner with the name underneath */
-.hero-head{ position:relative; z-index:1; text-align:center; display:flex; flex-direction:column; align-items:center; margin-bottom:44px; }
-.hero-head .hero-kicker{ justify-content:center; margin-bottom:22px; }
-.hero-portfolio{ font-family:'Big Shoulders Display', sans-serif; font-weight:800; text-transform:uppercase;
-  font-size:clamp(3.2rem, 11vw, 8rem); letter-spacing:.3em; padding-left:.3em; color:var(--safety); line-height:.95;
-  text-shadow:0 4px 30px rgba(0,0,0,.55); }
-.hero-head h1.hero-title{ max-width:none; margin-top:10px; font-size:clamp(2rem, 5.2vw, 4.2rem); line-height:1.05; text-shadow:0 4px 30px rgba(0,0,0,.6); }
-@media (max-width:520px){ .hero-portfolio{ font-size:clamp(2.2rem, 12vw, 3rem); letter-spacing:.14em; padding-left:.14em; } .hero-head .hero-kicker .bar{ display:none; } }
+  .hero-head{ position:relative; z-index:1; text-align:center; display:flex; flex-direction:column; align-items:center; margin-bottom:44px; }
+  .hero-head .hero-kicker{ justify-content:center; margin-bottom:22px; }
+  .hero-portfolio{ font-family:'Big Shoulders Display', sans-serif; font-weight:800; text-transform:uppercase;
+    font-size:clamp(3.2rem, 11vw, 8rem); letter-spacing:.3em; padding-left:.3em; color:var(--safety); line-height:.95;
+    text-shadow:0 4px 30px rgba(0,0,0,.55); }
+  .hero-head h1.hero-title{ max-width:none; margin-top:10px; font-size:clamp(2rem, 5.2vw, 4.2rem); line-height:1.05; text-shadow:0 4px 30px rgba(0,0,0,.6); }
+  @media (max-width:520px){ .hero-portfolio{ font-size:clamp(2.2rem, 12vw, 3rem); letter-spacing:.14em; padding-left:.14em; } .hero-head .hero-kicker .bar{ display:none; } }
+
+  /* project cards: tools & methods row */
+  .proj-tools{ display:flex; flex-wrap:wrap; align-items:center; gap:8px; }
+  .proj-tools .lbl{ font-family:'IBM Plex Mono', monospace; font-size:.7rem; color:var(--safety); margin-right:4px; }
+  .proj-tools .lbl{ min-width:64px; }
+  .tool-chip{ display:inline-flex; align-items:center; gap:8px; font-family:'IBM Plex Mono', monospace; font-size:.72rem; color:var(--ink);
+    border:1px solid var(--line); background:var(--surface); padding:5px 11px 5px 7px; border-radius:8px; }
+  .tool-chip img{ width:20px; height:20px; object-fit:contain; flex-shrink:0; background:#fff; border-radius:4px; padding:1px; }
+
+  /* tools & methods: full-width strip so the cover keeps its original proportions */
+  .report-feature > .report-tools{ grid-column:1 / -1; order:2; display:flex; flex-direction:column; gap:10px; padding:16px 30px; border-top:1px solid var(--line); }
+  @media (max-width:760px){ .report-feature > .report-tools{ padding:14px 20px; } }
+  @media (min-width:761px){
+    #project .wrap > .report-feature:last-child > .report-tools{ grid-column:1 / -1; grid-row:2; }
+    #project .wrap > .report-feature:last-child > .outcomes{ grid-row:3; }
+  }
 </style>
 </head>
 <body>
@@ -619,11 +636,11 @@
       <a href="#about">About</a>
       <a href="#education">Education</a>
       <a href="#skills">Skill &amp; Tools</a>
-      <a href="#experience">Experience</a>
-      <a href="#volunteer">Volunteer</a>
       <a href="#project">Project</a>
+      <a href="#experience">Experience</a>
       <a href="#certificate">Certificate</a>
       <a href="#publication">Publication</a>
+      <a href="#volunteer">Volunteer</a>
       <a href="#contact">Contact</a>
     </div>
     <button class="nav-toggle" id="navToggle" aria-label="Open menu">☰</button>
@@ -641,7 +658,7 @@
     <div class="hero-grid">
       <div>
         <div class="role">Health, Safety &amp; Environment Enthusiast</div>
-       <p class="lede">Industrial Engineering graduate with a strong interest in Occupational Health &amp; Safety (K3) and hands-on experience as an HSE Intern in a construction project environment.</p>
+        <p class="lede">Fresh graduate with a strong interest in Occupational Health &amp; Safety (K3) and hands-on experience as an HSE Intern in a construction project environment.</p>
         <div class="cta-row">
           <a class="btn btn-solid" href="CV_Muhammad Danish Pambudii.pdf" download target="_blank">Download CV (PDF)</a>
         </div>
@@ -738,9 +755,81 @@
   </div>
 </section>
 
+<section id="project">
+  <div class="wrap">
+    <div class="tag-heading"><span class="num">04</span><h2>Project</h2></div>
+    <div class="report-feature">
+      <a class="report-cover" href="Laporan Capstone Danish.pdf" target="_blank" rel="noopener" aria-label="Open the Capstone Design report (PDF)">
+        <img src="Laporan-Capstone-cover.png" alt="Capstone Design report cover" loading="lazy">
+        <span class="cert-badge">PDF</span>
+      </a>
+      <div class="report-info">
+        <span class="when">FINAL PROJECT I REPORT · 2025</span>
+        <h3>Design of an Ergonomic Multifunction Welding Table to Improve the Efficiency of Shielded Metal Arc Welding (SMAW)</h3>
+        <p>Design of an ergonomic multifunction welding table to improve the efficiency and safety of welding operators, using the PDCA (Plan–Do–Check–Action) approach as a continuous improvement cycle. The full report covers the introduction, theoretical background, methodology, results and discussion, and conclusions and recommendations.</p>
+        <div class="report-meta">
+          <span><b>Team:</b> Don Arges Panjaitan, Muhamad Raihan Faturrahman, Muhammad Danish Pambudi, Muhamad Farid Wimar Putra</span>
+          <span><b>Program:</b> Industrial Engineering, Universitas Singaperbangsa Karawang</span>
+          <span><b>Keywords:</b> PDCA · Ergonomics · Occupational Safety</span>
+        </div>
+        <div class="report-actions">
+          <a class="btn btn-solid" href="Lap_Muhammad Danish Pambudi_2210631140142.pdf" target="_blank" rel="noopener">Read Report (PDF)</a>
+          <a class="btn btn-ghost" href="Lap_Muhammad Danish Pambudi_2210631140142.pdf" download>Download</a>
+        </div>
+      </div>
+      <div class="report-tools">
+        <div class="proj-tools"><span class="lbl">Tools</span><span class="tool-chip"><img src="https://images.seeklogo.com/logo-png/35/1/autocad-logo-png_seeklogo-353607.png" alt="" loading="lazy">AutoCAD</span><span class="tool-chip"><img src="https://images.seeklogo.com/logo-png/42/1/sketchup-logo-png_seeklogo-428440.png" alt="" loading="lazy">SketchUp</span><span class="tool-chip"><img src="https://upload.wikimedia.org/wikipedia/commons/e/e3/Microsoft_Office_Excel_%282019%E2%80%932025%29.svg" alt="" loading="lazy">Excel</span><span class="tool-chip"><img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Microsoft_Office_Word_%282019%E2%80%932025%29.svg" alt="" loading="lazy">Word</span></div>
+        <div class="proj-tools"><span class="lbl">Methods</span><span class="chip">PDCA Cycle</span><span class="chip">Ergonomic Design</span><span class="chip">SMAW Welding</span></div>
+      </div>
+      <div class="outcomes"><h5>Key results</h5><ul><li>Delivered a design for an <strong>ergonomic multifunction welding table</strong> for shielded metal arc welding (SMAW).</li><li>Developed through the <strong>PDCA cycle</strong> (Plan–Do–Check–Action) by a team of four.</li><li>Aimed at improving <strong>operator efficiency and safety</strong> during welding work.</li></ul></div>
+    </div>
+
+    <div class="cert-group-title"><span class="bar"></span><span><strong>Capstone Design Documentation</strong></span></div>
+    <div class="project-gallery">
+      <div class="gallery-item"><img src="TA 1.png" alt="Project evidence 1"><div class="gallery-caption">Capstone Design</div></div>
+      <div class="gallery-item"><img src="TA 2.png" alt="Project evidence 2"><div class="gallery-caption">Capstone Design</div></div>
+      <div class="gallery-item"><img src="TA 3.png" alt="Project evidence 3"><div class="gallery-caption">Capstone Design</div></div>
+      <div class="gallery-item"><img src="TA 4.png" alt="Project evidence 4"><div class="gallery-caption">Capstone Design</div></div>
+      <div class="gallery-item"><img src="TA 5.png" alt="Project evidence 5"><div class="gallery-caption">Capstone Design</div></div>
+      <div class="gallery-item"><img src="TA 6.png" alt="Project evidence 6"><div class="gallery-caption">Capstone Design</div></div>
+      <div class="gallery-item"><img src="TA 8.jpeg" alt="Project evidence 8"><div class="gallery-caption">Capstone Design</div></div>
+      <div class="gallery-item"><img src="TA 9.jpeg" alt="Project evidence 9"><div class="gallery-caption">Capstone Design</div></div>
+      <div class="gallery-item"><img src="TA 10.jpeg" alt="Project evidence 10"><div class="gallery-caption">Capstone Design Team</div></div>
+    </div>
+
+    <div class="cert-group-title"><span class="bar"></span><span><strong>Internship Project (Kerja Praktek)</strong> — RSPON Cawang, WIKA-PP KSO</span></div>
+    <div class="report-feature">
+      <a class="report-cover" href="Laporan KP Danish.pdf" target="_blank" rel="noopener" aria-label="Open the Internship (Kerja Praktek) report (PDF)">
+        <img src="Laporan-KP-cover.png" alt="Internship (Kerja Praktek) report cover" loading="lazy">
+        <span class="cert-badge">PDF</span>
+      </a>
+      <div class="report-info">
+        <span class="when">INTERNSHIP REPORT (KERJA PRAKTEK) · 2025</span>
+        <h3>Risk Analysis of Lightweight Brick Installation Using Scaffolding with the Job Safety Analysis (JSA) Method on a Hospital Construction Project</h3>
+        <p>Occupational safety study carried out during my HSE internship at the RSPON Cawang hospital project (PT WIKA–PP KSO). Nine work activities and 18 hazards were assessed with JSA using a likelihood × severity matrix: seven activities rated high risk and two medium, with scaffolding inspection and assembly scoring highest. Risk controls follow the hierarchy of controls, from routine scaffold inspection and safe work procedures to engineering measures such as guardrails, toe boards, and safety nets.</p>
+        <div class="report-meta">
+          <span><b>Site:</b> RSPON Cawang Hospital Project, East Jakarta</span>
+          <span><b>Academic Supervisor:</b> Ir. Agustian Suseno, S.T., M.M.</span>
+          <span><b>Keywords:</b> JSA · Scaffolding · Risk Assessment · Construction Safety</span>
+          <span><b>Language:</b> Indonesian</span>
+        </div>
+        <div class="report-actions">
+          <a class="btn btn-solid" href="Laporan KP Danish.pdf" target="_blank" rel="noopener">Read Report (PDF)</a>
+          <a class="btn btn-ghost" href="Laporan KP Danish.pdf" download>Download</a>
+        </div>
+      </div>
+      <div class="report-tools">
+        <div class="proj-tools"><span class="lbl">Tools</span><span class="tool-chip"><img src="https://upload.wikimedia.org/wikipedia/commons/e/e3/Microsoft_Office_Excel_%282019%E2%80%932025%29.svg" alt="" loading="lazy">Excel</span><span class="tool-chip"><img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Microsoft_Office_Word_%282019%E2%80%932025%29.svg" alt="" loading="lazy">Word</span></div>
+        <div class="proj-tools"><span class="lbl">Methods</span><span class="chip">Job Safety Analysis (JSA)</span><span class="chip">Risk Matrix (Likelihood × Severity)</span><span class="chip">Hierarchy of Controls</span></div>
+      </div>
+      <div class="outcomes"><h5>Key results</h5><ul><li>Assessed <strong>9 work activities and 18 hazards</strong> on a hospital construction project using Job Safety Analysis (JSA).</li><li>Identified <strong>scaffolding inspection and assembly</strong> as the highest-risk activities.</li><li>Recommended controls based on the <strong>hierarchy of controls</strong>, from safe work procedures to guardrails, toe boards, and safety nets.</li></ul></div>
+    </div>
+  </div>
+</section>
+
 <section id="experience">
   <div class="wrap">
-    <div class="tag-heading"><span class="num">04</span><h2>Experience</h2></div>
+    <div class="tag-heading"><span class="num">05</span><h2>Experience</h2></div>
     <p class="section-sub">A collection of work experience, internships, and projects I've worked on.</p>
     <div class="job-list">
 
@@ -774,12 +863,12 @@
           <p>Conducted <strong>electrical panel tagging</strong> with the HSE team to verify electrical installation safety.</p>
           <p>Participated in <strong>Fit to Work</strong> procedures to assess workers' physical readiness (health conditions, fatigue, etc.) prior to starting work activities.</p>
           <div class="chip-row">
-            <span class="chip">ISO 14001</span><span class="chip">ISO 45001</span><span class="chip">Construction</span><span class="chip">Environment, Health &amp; Safety (EHS)</span><span class="chip">Project Planning</span>
+            <span class="chip">Administrative Support</span><span class="chip">Human Resources (HR)</span><span class="chip">Microsoft Excel</span><span class="chip">Environment, Health &amp; Safety (EHS)</span><span class="chip">Project Planning</span>
           </div>
 
           <div class="cd-block" id="internship-certificate">
             <div class="cd-head">
-              <div class="cd-title"><span class="bar"></span><span><strong>Certificate of Completion</strong> — HSE, · WIKA-PP KSO</span></div>
+              <div class="cd-title"><span class="bar"></span><span><strong>Certificate of Completion</strong> — Kerja Praktek, Divisi HSE · WIKA-PP KSO</span></div>
               <div class="cd-actions">
                 <a class="btn btn-ghost" href="sertifikat_kp_wika.jpg" target="_blank" rel="noopener">View full size</a>
                 <a class="btn btn-ghost" href="sertifikat_kp_wika.jpg" download>Download</a>
@@ -821,103 +910,9 @@
   </div>
 </section>
 
-<section id="volunteer">
-  <div class="wrap">
-    <div class="tag-heading"><span class="num">05</span><h2>Volunteer</h2></div>
-    <div class="timeline">
-      <div class="t-item">
-        <span class="when">January 2024 — February 2024</span>
-        <h4>2024 Presidential Election Committee — Voting Station Organizing Group (KPPS)</h4>
-        <p>Carried out the voting and vote-counting process in accordance with applicable regulations.</p>
-        <p>Verified voter data and ensured smooth administrative processes at the polling station.</p>
-        <p>Prepared official records and documentation of the voting and vote-counting results accurately.</p>
-        <p>Coordinated with the team to keep the election process orderly, transparent, and procedure-compliant.</p>
-      </div>
-      <div class="t-item">
-        <span class="when">June 2025 — August 2025</span>
-        <h4>PDD Staff (Publication &amp; Documentation) — Community Service Program (KKN)</h4>
-        <p>Created and managed publication content for the KKN social media accounts, including Instagram, TikTok, and YouTube.</p>
-        <p>Documented KKN activities and work programs through photos and videos.</p>
-        <p>Edited photos and videos for publication and activity documentation.</p>
-        <p>Coordinated with staff from other divisions and the committee to prepare publication materials.</p>
-        <p>Supported branding and the communication of KKN work programs to the community through digital media.</p>
-      </div>
-      <div class="t-item">
-        <span class="when">2024</span>
-        <h4>Main Committee Member, Field Division — Information Systems Analysis and Design Practicum</h4>
-        <p>Responsible for the smooth running of the practicum in the field, including preparing the venue, equipment, and technical requirements. Coordinated with the committee and participants, ran activities according to the rundown, and helped resolve technical and operational issues that arose during the practicum.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="project">
-  <div class="wrap">
-    <div class="tag-heading"><span class="num">06</span><h2>Project</h2></div>
-    <div class="report-feature">
-      <a class="report-cover" href="Laporan Capstone Danish.pdf" target="_blank" rel="noopener" aria-label="Open the Capstone Design report (PDF)">
-        <img src="Laporan-Capstone-cover.png" alt="Capstone Design report cover" loading="lazy">
-        <span class="cert-badge">PDF</span>
-      </a>
-      <div class="report-info">
-        <span class="when">FINAL PROJECT I REPORT · 2025</span>
-        <h3>Design of an Ergonomic Multifunction Welding Table to Improve the Efficiency of Shielded Metal Arc Welding (SMAW)</h3>
-        <p>Design of an ergonomic multifunction welding table to improve the efficiency and safety of welding operators, using the PDCA (Plan–Do–Check–Action) approach as a continuous improvement cycle. The full report covers the introduction, theoretical background, methodology, results and discussion, and conclusions and recommendations.</p>
-        <div class="report-meta">
-          <span><b>Team:</b> Don Arges Panjaitan, Muhamad Raihan Faturrahman, Muhammad Danish Pambudi, Muhamad Farid Wimar Putra</span>
-          <span><b>Program:</b> Industrial Engineering, Universitas Singaperbangsa Karawang</span>
-          <span><b>Keywords:</b> PDCA · Ergonomics · Occupational Safety</span>
-        </div>
-        <div class="report-actions">
-          <a class="btn btn-solid" href="Lap_Muhammad Danish Pambudi_2210631140142.pdf" target="_blank" rel="noopener">Read Report (PDF)</a>
-          <a class="btn btn-ghost" href="Lap_Muhammad Danish Pambudi_2210631140142.pdf" download>Download</a>
-        </div>
-      </div>
-      <div class="outcomes"><h5>Key results</h5><ul><li>Delivered a design for an <strong>ergonomic multifunction welding table</strong> for shielded metal arc welding (SMAW).</li><li>Developed through the <strong>PDCA cycle</strong> (Plan–Do–Check–Action) by a team of four.</li><li>Aimed at improving <strong>operator efficiency and safety</strong> during welding work.</li></ul></div>
-    </div>
-
-    <div class="cert-group-title"><span class="bar"></span><span><strong>Capstone Design Documentation</strong></span></div>
-    <div class="project-gallery">
-      <div class="gallery-item"><img src="TA 1.png" alt="Project evidence 1"><div class="gallery-caption">Capstone Design</div></div>
-      <div class="gallery-item"><img src="TA 2.png" alt="Project evidence 2"><div class="gallery-caption">Capstone Design</div></div>
-      <div class="gallery-item"><img src="TA 3.png" alt="Project evidence 3"><div class="gallery-caption">Capstone Design</div></div>
-      <div class="gallery-item"><img src="TA 4.png" alt="Project evidence 4"><div class="gallery-caption">Capstone Design</div></div>
-      <div class="gallery-item"><img src="TA 5.png" alt="Project evidence 5"><div class="gallery-caption">Capstone Design</div></div>
-      <div class="gallery-item"><img src="TA 6.png" alt="Project evidence 6"><div class="gallery-caption">Capstone Design</div></div>
-      <div class="gallery-item"><img src="TA 8.jpeg" alt="Project evidence 8"><div class="gallery-caption">Capstone Design</div></div>
-      <div class="gallery-item"><img src="TA 9.jpeg" alt="Project evidence 9"><div class="gallery-caption">Capstone Design</div></div>
-      <div class="gallery-item"><img src="TA 10.jpeg" alt="Project evidence 10"><div class="gallery-caption">Capstone Design Team</div></div>
-    </div>
-
-    <div class="cert-group-title"><span class="bar"></span><span><strong>Internship Project (Kerja Praktek)</strong> — RSPON Cawang, WIKA-PP KSO</span></div>
-    <div class="report-feature">
-      <a class="report-cover" href="Laporan KP Danish.pdf" target="_blank" rel="noopener" aria-label="Open the Internship (Kerja Praktek) report (PDF)">
-        <img src="Laporan-KP-cover.png" alt="Internship (Kerja Praktek) report cover" loading="lazy">
-        <span class="cert-badge">PDF</span>
-      </a>
-      <div class="report-info">
-        <span class="when">INTERNSHIP REPORT (KERJA PRAKTEK) · 2025</span>
-        <h3>Risk Analysis of Lightweight Brick Installation Using Scaffolding with the Job Safety Analysis (JSA) Method on a Hospital Construction Project</h3>
-        <p>Occupational safety study carried out during my HSE internship at the RSPON Cawang hospital project (PT WIKA–PP KSO). Nine work activities and 18 hazards were assessed with JSA using a likelihood × severity matrix: seven activities rated high risk and two medium, with scaffolding inspection and assembly scoring highest. Risk controls follow the hierarchy of controls, from routine scaffold inspection and safe work procedures to engineering measures such as guardrails, toe boards, and safety nets.</p>
-        <div class="report-meta">
-          <span><b>Site:</b> RSPON Cawang Hospital Project, East Jakarta</span>
-          <span><b>Academic Supervisor:</b> Ir. Agustian Suseno, S.T., M.M.</span>
-          <span><b>Keywords:</b> JSA · Scaffolding · Risk Assessment · Construction Safety</span>
-          <span><b>Language:</b> Indonesian</span>
-        </div>
-        <div class="report-actions">
-          <a class="btn btn-solid" href="Laporan KP Danish.pdf" target="_blank" rel="noopener">Read Report (PDF)</a>
-          <a class="btn btn-ghost" href="Laporan KP Danish.pdf" download>Download</a>
-        </div>
-      </div>
-      <div class="outcomes"><h5>Key results</h5><ul><li>Assessed <strong>9 work activities and 18 hazards</strong> on a hospital construction project using Job Safety Analysis (JSA).</li><li>Identified <strong>scaffolding inspection and assembly</strong> as the highest-risk activities.</li><li>Recommended controls based on the <strong>hierarchy of controls</strong>, from safe work procedures to guardrails, toe boards, and safety nets.</li></ul></div>
-    </div>
-  </div>
-</section>
-
 <section id="certificate">
   <div class="wrap">
-    <div class="tag-heading"><span class="num">07</span><h2>Certificate</h2></div>
+    <div class="tag-heading"><span class="num">06</span><h2>Certificate</h2></div>
     <div class="cert-group-title"><span class="bar"></span><span><strong>General Occupational Safety & Health (OSH) Expert Competency Education & Training</strong> — PT Nagan Training</span></div>
     <div class="cert-grid">
       <article class="cert-card">
@@ -1075,7 +1070,7 @@
 
 <section id="publication">
   <div class="wrap">
-    <div class="tag-heading"><span class="num">08</span><h2>Publication</h2></div>
+    <div class="tag-heading"><span class="num">07</span><h2>Publication</h2></div>
     <div class="report-feature">
       <a class="report-cover" href="2177-Article Text-15954-1-10-20260222.pdf" target="_blank" rel="noopener" aria-label="Open the JENIUS acceptance letter (PDF)">
         <img src="Jurnal-Naskah-1.png" alt="JENIUS journal acceptance letter" loading="lazy">
@@ -1094,6 +1089,36 @@
           <a class="btn btn-solid" href="2177 SKAVMEI2026 - Muhammad Danish Pambudi.pdf" target="_blank" rel="noopener">Acceptance Letter (PDF)</a>
           <a class="btn btn-ghost" href="2177-Article Text-15954-1-10-20260222.pdf" target="_blank" rel="noopener">Manuscript (PDF)</a>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="volunteer">
+  <div class="wrap">
+    <div class="tag-heading"><span class="num">08</span><h2>Volunteer</h2></div>
+    <div class="timeline">
+      <div class="t-item">
+        <span class="when">January 2024 — February 2024</span>
+        <h4>2024 Presidential Election Committee — Voting Station Organizing Group (KPPS)</h4>
+        <p>Carried out the voting and vote-counting process in accordance with applicable regulations.</p>
+        <p>Verified voter data and ensured smooth administrative processes at the polling station.</p>
+        <p>Prepared official records and documentation of the voting and vote-counting results accurately.</p>
+        <p>Coordinated with the team to keep the election process orderly, transparent, and procedure-compliant.</p>
+      </div>
+      <div class="t-item">
+        <span class="when">June 2025 — August 2025</span>
+        <h4>PDD Staff (Publication &amp; Documentation) — Community Service Program (KKN)</h4>
+        <p>Created and managed publication content for the KKN social media accounts, including Instagram, TikTok, and YouTube.</p>
+        <p>Documented KKN activities and work programs through photos and videos.</p>
+        <p>Edited photos and videos for publication and activity documentation.</p>
+        <p>Coordinated with staff from other divisions and the committee to prepare publication materials.</p>
+        <p>Supported branding and the communication of KKN work programs to the community through digital media.</p>
+      </div>
+      <div class="t-item">
+        <span class="when">2024</span>
+        <h4>Main Committee Member, Field Division — Information Systems Analysis and Design Practicum</h4>
+        <p>Responsible for the smooth running of the practicum in the field, including preparing the venue, equipment, and technical requirements. Coordinated with the committee and participants, ran activities according to the rundown, and helped resolve technical and operational issues that arose during the practicum.</p>
       </div>
     </div>
   </div>
@@ -1254,13 +1279,13 @@
   addEventListener('keydown', e => { if (e.key === 'Escape') lb.classList.remove('open'); });
 
   /* ---------- internship certificate zoom ---------- */
-const cdWrap = document.getElementById('cdWrap');
-if (cdWrap) {
-  const toggleCd = () => { if (innerWidth > 520) cdWrap.classList.toggle('is-zoom'); };
-  cdWrap.addEventListener('click', toggleCd);
-  cdWrap.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleCd(); } });
-  addEventListener('keydown', e => { if (e.key === 'Escape') cdWrap.classList.remove('is-zoom'); });
-}
+  const cdWrap = document.getElementById('cdWrap');
+  if (cdWrap) {
+    const toggleCd = () => { if (innerWidth > 520) cdWrap.classList.toggle('is-zoom'); };
+    cdWrap.addEventListener('click', toggleCd);
+    cdWrap.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleCd(); } });
+    addEventListener('keydown', e => { if (e.key === 'Escape') cdWrap.classList.remove('is-zoom'); });
+  }
 
   /* ---------- hero motion: sparks + typed role ---------- */
   const heroBox = document.querySelector('.hero');
