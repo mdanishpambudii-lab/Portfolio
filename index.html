@@ -581,6 +581,20 @@
   .job-ticket .period .p-date{ display:block; }
   .job-ticket .period .p-dur{ display:inline-block; margin-top:8px; padding:3px 12px; border-radius:999px; background:var(--safety); color:var(--graphite); font-size:.8rem; font-weight:700; }
   @media (max-width:600px){ .job-ticket .period{ text-align:left; border-left:0; padding-left:0; } }
+
+  /* ===== Internship completion certificate ===== */
+.cd-block{ margin-top:26px; border:1px solid var(--line); background:rgba(255,255,255,.02); }
+.cd-head{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; padding:14px 18px; border-bottom:1px dashed var(--line); }
+.cd-head .cd-title{ font-family:'IBM Plex Mono', monospace; font-size:.74rem; color:var(--ink-soft); display:flex; align-items:center; gap:10px; }
+.cd-head .cd-title .bar{ width:20px; height:2px; background:var(--safety); flex-shrink:0; }
+.cd-head .cd-title strong{ color:#fff; font-weight:600; }
+.cd-actions{ display:flex; gap:8px; flex-wrap:wrap; }
+.cd-actions .btn{ padding:8px 12px; font-size:.72rem; }
+.cd-stage{ padding:22px 18px 26px; display:flex; justify-content:center; }
+.cd-wrap{ width:min(760px,100%); cursor:zoom-in; }
+.cd-wrap img{ display:block; width:100%; height:auto; box-shadow:0 24px 50px -22px rgba(0,0,0,.9); }
+.cd-wrap.is-zoom{ position:fixed; inset:0; z-index:100; width:auto; display:flex; align-items:center; justify-content:center; padding:24px; background:rgba(0,0,0,.92); cursor:zoom-out; }
+.cd-wrap.is-zoom img{ width:auto; max-width:100%; max-height:92vh; box-shadow:none; }
 </style>
 </head>
 <body>
@@ -1226,6 +1240,15 @@
     else if (e.target.closest('#lb')) lb.classList.remove('open');
   });
   addEventListener('keydown', e => { if (e.key === 'Escape') lb.classList.remove('open'); });
+
+  /* ---------- internship certificate zoom ---------- */
+const cdWrap = document.getElementById('cdWrap');
+if (cdWrap) {
+  const toggleCd = () => { if (innerWidth > 520) cdWrap.classList.toggle('is-zoom'); };
+  cdWrap.addEventListener('click', toggleCd);
+  cdWrap.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleCd(); } });
+  addEventListener('keydown', e => { if (e.key === 'Escape') cdWrap.classList.remove('is-zoom'); });
+}
 
   /* ---------- hero motion: sparks + typed role ---------- */
   const heroBox = document.querySelector('.hero');
