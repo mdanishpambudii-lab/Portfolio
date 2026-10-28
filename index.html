@@ -597,14 +597,6 @@
   .cd-wrap.is-zoom img{ width:auto; max-width:100%; max-height:92vh; box-shadow:none; }
 
 
-  /* hero: centred "PORTFOLIO" banner with the name underneath */
-  .hero-head{ position:relative; z-index:1; text-align:center; display:flex; flex-direction:column; align-items:center; margin-bottom:44px; }
-  .hero-head .hero-kicker{ justify-content:center; margin-bottom:22px; }
-  .hero-portfolio{ font-family:'Big Shoulders Display', sans-serif; font-weight:800; text-transform:uppercase;
-    font-size:clamp(3.2rem, 11vw, 8rem); letter-spacing:.3em; padding-left:.3em; color:var(--safety); line-height:.95;
-    text-shadow:0 4px 30px rgba(0,0,0,.55); }
-  .hero-head h1.hero-title{ max-width:none; margin-top:10px; font-size:clamp(2rem, 5.2vw, 4.2rem); line-height:1.05; text-shadow:0 4px 30px rgba(0,0,0,.6); }
-  @media (max-width:520px){ .hero-portfolio{ font-size:clamp(2.2rem, 12vw, 3rem); letter-spacing:.14em; padding-left:.14em; } .hero-head .hero-kicker .bar{ display:none; } }
 
   /* project cards: tools & methods row */
   .proj-tools{ display:flex; flex-wrap:wrap; align-items:center; gap:8px; }
@@ -621,6 +613,64 @@
     #project .wrap > .report-feature:last-child > .report-tools{ grid-column:1 / -1; grid-row:2; }
     #project .wrap > .report-feature:last-child > .outcomes{ grid-row:3; }
   }
+
+  /* ================= HERO POSTER: giant PORTFOLIO behind the portrait ================= */
+  .hero.hero-poster{
+    padding:0; animation:none; overflow:hidden; position:relative; color:#F4F1E7;
+    background:
+      radial-gradient(55% 60% at 50% 62%, rgba(96,108,128,.30), transparent 70%),
+      radial-gradient(45% 55% at 82% 18%, rgba(200,169,107,.16), transparent 70%),
+      linear-gradient(180deg,#14171c 0%,#0b0d10 100%);
+  }
+  .hero.hero-poster .spark{ z-index:6; }
+  .hp-stage{ position:relative; width:100%; height:clamp(660px, 100svh, 940px); }
+  .hp-art{ position:absolute; inset:0; }
+  .hp-word{
+    position:absolute; left:0; right:0; top:21%; text-align:center; white-space:nowrap; user-select:none;
+    font-family:'Big Shoulders Display', 'Arial Narrow', sans-serif; font-weight:800; text-transform:uppercase;
+    font-size:clamp(5rem, 22.5vw, 26rem); line-height:.86; letter-spacing:-.005em;
+  }
+  .hp-solid{ color:#EDE4D0; z-index:1; }
+  .hp-line{ z-index:3; color:transparent; -webkit-text-stroke:1.5px rgba(237,228,208,.6); pointer-events:none; }
+  .hp-person{ position:absolute; z-index:2; bottom:0; left:50%; height:86%; width:auto; max-width:none; transform:translateX(-47%); user-select:none; -webkit-user-drag:none; }
+
+  .hp-kicker{ position:absolute; z-index:4; top:112px; left:max(20px, calc((100% - var(--sheet-w)) / 2)); display:flex; flex-direction:column; gap:4px; }
+  .hp-kicker strong{ font-family:'Big Shoulders Display', sans-serif; font-weight:700; font-size:clamp(1.5rem, 2.6vw, 2.3rem); line-height:1; color:#F4F1E7; text-transform:uppercase; }
+  .hp-kicker span{ font-family:'IBM Plex Mono', monospace; font-size:.78rem; color:var(--ink-soft); }
+
+  .hero .hp-name{ position:absolute; z-index:4; right:max(20px, calc((100% - var(--sheet-w)) / 2)); bottom:56px; margin:0; max-width:none; white-space:nowrap; text-align:right;
+    font-size:clamp(1.5rem, 2.7vw, 2.5rem); line-height:1.05; color:#FBF9F1; text-shadow:0 3px 24px rgba(0,0,0,.65); }
+
+  .hp-info{ position:absolute; z-index:4; left:max(20px, calc((100% - var(--sheet-w)) / 2)); bottom:56px; width:min(380px, 30vw); text-shadow:0 2px 18px rgba(0,0,0,.7); }
+  .hp-info .role{ margin:0; }
+  .hp-info p.lede{ margin:12px 0 20px; font-size:.94rem; color:#C9C5BA; max-width:none; }
+  .hp-info .cta-row{ margin:0; }
+
+  @media (max-width:980px){
+    .hp-info{ width:min(340px, 38vw); }
+    .hp-info p.lede{ font-size:.86rem; }
+  }
+  @media (max-width:760px){
+    .hp-stage{ height:auto; padding:96px 20px 40px; display:flex; flex-direction:column; }
+    .hp-kicker{ position:static; order:1; margin-bottom:6px; }
+    .hp-art{ position:relative; inset:auto; order:2; height:min(92vw, 520px); margin:0 -20px; }
+    .hp-word{ top:6%; font-size:23.5vw; }
+    .hp-person{ height:84%; left:50%; transform:translateX(-47%); }
+    .hero .hp-name{ position:static; order:3; white-space:normal; text-align:left; margin-top:8px; font-size:clamp(1.7rem,7.4vw,2.3rem); }
+    .hp-info{ position:static; order:4; width:auto; margin-top:12px; }
+    .hp-info p.lede{ font-size:.92rem; }
+  }
+
+  /* ---------- About: same ambient lights as the hero ---------- */
+  #about{ position:relative; overflow:hidden;
+    background:
+      radial-gradient(ellipse at 88% 0%, rgba(200,169,107,.12), transparent 55%),
+      radial-gradient(ellipse at 8% 100%, rgba(200,169,107,.07), transparent 55%); }
+  #about::after{ content:""; position:absolute; z-index:0; width:560px; height:560px; right:-140px; top:-180px; pointer-events:none;
+    background:radial-gradient(circle, rgba(200,169,107,.20), transparent 65%); animation:glowFloat 14s ease-in-out infinite alternate; }
+  #about > .wrap{ position:relative; z-index:1; }
+  #about .spark{ z-index:0; }
+  @media (prefers-reduced-motion:reduce){ #about::after{ animation:none; } }
 </style>
 </head>
 <body>
@@ -648,20 +698,20 @@
 </header>
 <div class="hazard-strip"></div>
 
-<section class="hero">
-  <div class="wrap">
-    <div class="hero-head">
-      <div class="hero-kicker"><span class="bar"></span>Industrial Engineering · Universitas Singaperbangsa Karawang</div>
-      <div class="hero-portfolio">PORTFOLIO</div>
-      <h1 class="hero-title">Muhammad Danish Pambudi</h1>
+<section class="hero hero-poster">
+  <div class="hp-stage">
+    <div class="hp-art">
+      <div class="hp-word hp-solid" role="img" aria-label="Portfolio">PORTFOLIO</div>
+      <img class="hp-person" src="hero-cutout.webp" width="1581" height="861" alt="Muhammad Danish Pambudi swirling a graduation gown" fetchpriority="high">
+      <div class="hp-word hp-line" aria-hidden="true">PORTFOLIO</div>
     </div>
-    <div class="hero-grid">
-      <div>
-        <div class="role">Health, Safety &amp; Environment Enthusiast</div>
-        <p class="lede">Indstrial graduate with a strong interest in Occupational Health &amp; Safety (K3) and hands-on experience as an HSE Intern in a construction project environment.</p>
-        <div class="cta-row">
-          <a class="btn btn-solid" href="CV_Muhammad Danish Pambudii.pdf" download target="_blank">Download CV (PDF)</a>
-        </div>
+    <div class="hp-kicker"><strong>Industrial Engineering</strong><span>Universitas Singaperbangsa Karawang</span></div>
+    <h1 class="hero-title hp-name">Muhammad Danish Pambudi, S.T.</h1>
+    <div class="hp-info">
+      <div class="role">Health, Safety &amp; Environment Enthusiast</div>
+      <p class="lede">Fresh graduate with a strong interest in Occupational Health &amp; Safety (K3) and hands-on experience as an HSE Intern in a construction project environment.</p>
+      <div class="cta-row">
+        <a class="btn btn-solid" href="CV_Muhammad Danish Pambudii.pdf" download target="_blank">Download CV (PDF)</a>
       </div>
     </div>
   </div>
@@ -868,7 +918,7 @@
 
           <div class="cd-block" id="internship-certificate">
             <div class="cd-head">
-              <div class="cd-title"><span class="bar"></span><span><strong>Certificate of Completion</strong> — HSE · WIKA-PP KSO</span></div>
+              <div class="cd-title"><span class="bar"></span><span><strong>Certificate of Completion</strong> — Kerja Praktek, Divisi HSE · WIKA-PP KSO</span></div>
               <div class="cd-actions">
                 <a class="btn btn-ghost" href="sertifikat_kp_wika.jpg" target="_blank" rel="noopener">View full size</a>
                 <a class="btn btn-ghost" href="sertifikat_kp_wika.jpg" download>Download</a>
@@ -1288,6 +1338,17 @@
   }
 
   /* ---------- hero motion: sparks + typed role ---------- */
+  /* gold sparks in the About section (same effect as the hero) */
+  const aboutBox = document.getElementById('about');
+  if (aboutBox && !reduceMotion) {
+    for (let i = 0; i < 12; i++) {
+      const sp = document.createElement('i');
+      const sz = 3 + Math.random() * 4;
+      sp.className = 'spark';
+      sp.style.cssText = `left:${Math.random() * 100}%;width:${sz}px;height:${sz}px;animation-duration:${10 + Math.random() * 10}s;animation-delay:${-Math.random() * 14}s`;
+      aboutBox.appendChild(sp);
+    }
+  }
   const heroBox = document.querySelector('.hero');
   if (heroBox && !reduceMotion) {
     for (let i = 0; i < 16; i++) {
