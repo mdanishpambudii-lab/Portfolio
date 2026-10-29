@@ -661,16 +661,29 @@
     .hp-info p.lede{ font-size:.92rem; }
   }
 
-  /* ---------- About: same ambient lights as the hero ---------- */
-  #about{ position:relative; overflow:hidden;
+  /* ---------- Ambient lights on every section (same look as the hero) ---------- */
+  section[id]{ position:relative; overflow:hidden; }
+  section[id] > .wrap{ position:relative; z-index:1; }
+  section[id] .spark{ z-index:0; }
+  /* even, uniform backdrop (contact keeps its photo) */
+  section[id]:not(#contact){
     background:
       radial-gradient(ellipse at 88% 0%, rgba(200,169,107,.12), transparent 55%),
-      radial-gradient(ellipse at 8% 100%, rgba(200,169,107,.07), transparent 55%); }
-  #about::after{ content:""; position:absolute; z-index:0; width:560px; height:560px; right:-140px; top:-180px; pointer-events:none;
+      radial-gradient(ellipse at 8% 100%, rgba(200,169,107,.07), transparent 55%),
+      var(--paper);
+  }
+  section[id]:nth-of-type(even):not(#contact){
+    background:
+      radial-gradient(ellipse at 12% 0%, rgba(200,169,107,.12), transparent 55%),
+      radial-gradient(ellipse at 92% 100%, rgba(200,169,107,.07), transparent 55%),
+      var(--paper);
+  }
+  /* slowly drifting glow, alternating sides */
+  section[id]::after{ content:""; position:absolute; z-index:0; width:560px; height:560px; right:-140px; top:-180px; pointer-events:none;
     background:radial-gradient(circle, rgba(200,169,107,.20), transparent 65%); animation:glowFloat 14s ease-in-out infinite alternate; }
-  #about > .wrap{ position:relative; z-index:1; }
-  #about .spark{ z-index:0; }
-  @media (prefers-reduced-motion:reduce){ #about::after{ animation:none; } }
+  section[id]:nth-of-type(even)::after{ right:auto; left:-140px; animation-name:glowFloatL; }
+  @keyframes glowFloatL{ from{ transform:translate(0,0) scale(1); } to{ transform:translate(160px,200px) scale(1.25); } }
+  @media (prefers-reduced-motion:reduce){ section[id]::after{ animation:none; } }
 </style>
 </head>
 <body>
@@ -706,7 +719,7 @@
       <div class="hp-word hp-line" aria-hidden="true">PORTFOLIO</div>
     </div>
     <div class="hp-kicker"><strong>Industrial Engineering</strong><span>Universitas Singaperbangsa Karawang</span></div>
-    <h1 class="hero-title hp-name">Muhammad Danish Pambudi, S.T.</h1>
+    <h1 class="hero-title hp-name">Muhammad Danish Pambudi</h1>
     <div class="hp-info">
       <div class="role">Health, Safety &amp; Environment Enthusiast</div>
       <p class="lede">Fresh graduate with a strong interest in Occupational Health &amp; Safety (K3) and hands-on experience as an HSE Intern in a construction project environment.</p>
@@ -1338,16 +1351,17 @@
   }
 
   /* ---------- hero motion: sparks + typed role ---------- */
-  /* gold sparks in the About section (same effect as the hero) */
-  const aboutBox = document.getElementById('about');
-  if (aboutBox && !reduceMotion) {
-    for (let i = 0; i < 12; i++) {
-      const sp = document.createElement('i');
-      const sz = 3 + Math.random() * 4;
-      sp.className = 'spark';
-      sp.style.cssText = `left:${Math.random() * 100}%;width:${sz}px;height:${sz}px;animation-duration:${10 + Math.random() * 10}s;animation-delay:${-Math.random() * 14}s`;
-      aboutBox.appendChild(sp);
-    }
+  /* gold sparks in every section (same effect as the hero) */
+  if (!reduceMotion) {
+    document.querySelectorAll('section[id]').forEach(box => {
+      for (let i = 0; i < 8; i++) {
+        const sp = document.createElement('i');
+        const sz = 3 + Math.random() * 4;
+        sp.className = 'spark';
+        sp.style.cssText = `left:${Math.random() * 100}%;width:${sz}px;height:${sz}px;animation-duration:${10 + Math.random() * 10}s;animation-delay:${-Math.random() * 14}s`;
+        box.appendChild(sp);
+      }
+    });
   }
   const heroBox = document.querySelector('.hero');
   if (heroBox && !reduceMotion) {
